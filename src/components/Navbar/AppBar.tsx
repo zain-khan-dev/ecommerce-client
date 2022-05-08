@@ -42,6 +42,11 @@ const AppBar = () => {
                 <Typography variant="h6">My Orders</Typography>
                 </Box>
             </Link>
+            <Link to="cart">
+                <Box component="span" sx={{lineHeight:1}} >
+                    <Typography variant="h6">Cart</Typography>
+                </Box>
+            </Link>
             <Button variant="contained" onClick={handleDialogAction}> Signup</Button>
             <FormDialog open={open} setOpen={setOpen} />
         </Box>

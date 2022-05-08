@@ -19,6 +19,8 @@ import SellerHome from "./pages/SellerHome"
 import SignupForm from "./components/SignupForm"
 import Login from "./components/Login"
 import Orders from "./pages/Orders"
+import Cart from "./pages/Cart"
+
 
 
 const App:React.FC = () => { 
@@ -37,6 +39,7 @@ const App:React.FC = () => {
               <Route path="/orders" element={<Orders />} />
               <Route path="/login" element={<Login />} />
               <Route path="register" element={<SignupForm />} />
+              <Route path="/cart" element={<Cart />} />
             </Routes>
           </Router>
       </Container>

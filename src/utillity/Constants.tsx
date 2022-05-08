@@ -27,3 +27,18 @@ export interface Order {
     customer_id:number;
     product_id:number
 }
+
+export interface Product {
+    id:number,
+    name:string,
+    description:string,
+    seller:number,
+    stars:number,
+    orders:any[]
+}
+
+
+export interface CartItem {
+    productId:string,
+    quantity:number
+}
