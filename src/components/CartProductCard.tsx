@@ -1,5 +1,5 @@
 import Grid from "@mui/material/Grid"
-import {FC} from "react"
+import {FC, useEffect} from "react"
 import {CartItem} from "../utillity/Constants"
 
 
@@ -8,9 +8,15 @@ interface Prop {
 }
 
 const CartProductCard:FC<Prop> = ({cartItem}) => {
+ 
+    useEffect(()=>{
+        console.log()
+    }, [])
+ 
     return (
         <Grid item>
-            <div>Grid item</div>
+            <div>Title is {cartItem.name}</div>
+            <div> description is {cartItem.description}</div>
         </Grid>
     )
 }

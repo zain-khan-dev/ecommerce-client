@@ -4,9 +4,9 @@ import { Box } from "@mui/material"
 import { FC } from "react"
 import {Product} from "../utillity/Constants"
 import {useState} from 'react'
-import {placeOrder} from "../utillity/utils"
+import {placeOrder, postData} from "../utillity/utils"
 import Grid from "@mui/material/Grid"
-
+import {postAuthData} from "../utillity/utils"
 
 
 interface Prop {
@@ -28,7 +28,6 @@ const ProductCard:FC<Prop> = ({product}) => {
 
         const formData = new FormData()
         formData.append("status", "PE")
-        formData.append("customer_id", "1")
         formData.append("product_id", product.id+"")
 
 
@@ -38,7 +37,15 @@ const ProductCard:FC<Prop> = ({product}) => {
 
 
 
-    const addToCartHandler = () => {
+    const addToCartHandler = (e:React.MouseEvent<HTMLButtonElement, MouseEvent> , product:number) => {
+        postAuthData("addToCart/", {"product_id":product})
+        .then((result)=>{
+            console.log(result)
+            console.log("Added to cart succesfully")
+        })
+        .catch((e)=>{
+            console.log("There was a problem adding to cart" + e)
+        })
         console.log("added to cart")
     }
 
@@ -61,7 +68,7 @@ const ProductCard:FC<Prop> = ({product}) => {
                 </Button>
             </Box>
             <Box display="flex" flexDirection={{ md:"row"}} justifyContent="center">
-                <Button variant="contained"   sx={{width:"70px", height:"40px", fontSize:"10px"}}  onClick={(e) => addToCartHandler()}>Add to Cart</Button>
+                <Button variant="contained"   sx={{width:"70px", height:"40px", fontSize:"10px"}}  onClick={(e) => addToCartHandler(e, product.id)}>Add to Cart</Button>
                 <Button variant="contained" sx={{width:"60px", height:"40px",ml:4}} color="secondary" onClick={(e) => placeOrderHandler(e, product)}>Buy </Button>
             </Box>
         </Grid>
