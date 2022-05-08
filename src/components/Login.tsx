@@ -3,11 +3,11 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { postData } from '../utillity/utils';
 
-const Basic = () => (
+const Login = () => (
   <div>
     <h1>Any place in your app!</h1>
     <Formik
-      initialValues={{ email: '', password: '', address:'',name:'',phone_number:'' }}
+      initialValues={{ email: '', password: ''}}
       validate={values => {
         const errors:any = {};
         if (!values.email) {
@@ -22,10 +22,14 @@ const Basic = () => (
       onSubmit={(values, { setSubmitting }) => {
 
         console.log(values.email)
-        const data = {user:{username:values.email, password:values.password},name:values.name, address:values.address, phone_number:values.phone_number}
+        const data = {username:values.email, password:values.password}
 
-        postData("http://localhost:8000/ecommerce/customer/", data)
-        .then((result)=>console.log(result))
+        postData("http://localhost:8000/api/token/", data)
+        .then((result)=>{
+            console.log(result.data)
+            localStorage.setItem("refresh_token", result.data["refresh"])
+            localStorage.setItem("access_token", result.data["access"])
+        })
         .catch((e)=>console.log(e))
 
 
@@ -39,16 +43,10 @@ const Basic = () => (
         <Form>
             <Field type="email" name="email" placeholder="Enter Email" /><br />
             <ErrorMessage name="email" component="div" />
-            <Field type="text" name="name" placeholder="Enter Name" /><br />
-            <ErrorMessage name="name" component="div" />
             <Field type="password" name="password" placeholder="Enter Password" /><br />
             <ErrorMessage name="password" component="div" />
-            <Field type="text" name="address" placeholder="Enter Address" /><br />
-            <ErrorMessage name="address" component="div" />
-            <Field type="text" name="phone_number" placeholder="Enter Phone Number" /><br />
-            <ErrorMessage name="phone_number" component="div" />
             <button type="submit" disabled={isSubmitting}>
-                Submit
+                Login
             </button>
         </Form>
       )}
@@ -56,7 +54,7 @@ const Basic = () => (
   </div>
 );
 
-export default Basic;
+export default Login;
 
 
 // user = models.OneToOneField(User, on_delete=models.CASCADE, default=None, related_name='users')

@@ -10,7 +10,7 @@ const AppBar = () => {
 
     const [open, setOpen] = useState<boolean>(false)
 
-
+    
     const handleDialogAction = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
         setOpen(!open)
@@ -23,7 +23,7 @@ const AppBar = () => {
                     <Typography variant="h6">Home</Typography>
                 </Box>
             </Link>
-            <Link to="/individual" style={{textDecoration:"none"}}>
+            <Link to="/allproducts" style={{textDecoration:"none"}}>
                 <Box component="span" sx={{lineHeight:1}} >
                 <Typography variant="h6">Individual Product</Typography>
                 </Box>
@@ -35,6 +35,11 @@ const AppBar = () => {
             <Link to="/allproducts" style={{textDecoration:"none"}}>
                 <Box component="span" sx={{lineHeight:1}} >
                 <Typography variant="h6">All Product</Typography>
+                </Box>
+            </Link>
+            <Link to="/orders" style={{textDecoration:"none"}}>
+                <Box component="span" sx={{lineHeight:1}} >
+                <Typography variant="h6">My Orders</Typography>
                 </Box>
             </Link>
             <Button variant="contained" onClick={handleDialogAction}> Signup</Button>

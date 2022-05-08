@@ -7,11 +7,12 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import SignupForm from "./SignupForm"
-import LoginForm from "./LoginForm"
 import {useState} from "react"
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { Typography } from '@mui/material';
+import Login from "../components/Login"
+
 
 interface Props {
     open:boolean,
@@ -41,7 +42,7 @@ const [formType, setFormType] = useState<string>("signup")
   return (
     <div>
     
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose} >
         <ToggleButtonGroup fullWidth={true}
                 value={formType}
                 exclusive
@@ -59,7 +60,7 @@ const [formType, setFormType] = useState<string>("signup")
 
         <DialogContent>
           <DialogContentText>
-          {formType=="signup"?<SignupForm />:<LoginForm />}
+          {formType=="signup"?<SignupForm />:<Login />}
           </DialogContentText>
         </DialogContent>
         <DialogActions>

@@ -1,9 +1,9 @@
 import {FC, useEffect, useState} from "react"
-import {getAPIData} from "../utillity/utils"
+import {getData} from "../utillity/utils"
 import { Box } from "@mui/material"
 import { API_ENDPOINTS } from "../utillity/Constants"
 import { useParams } from "react-router-dom"
-
+import { Typography } from "@mui/material"
 
 
 
@@ -29,7 +29,7 @@ const IndividualProduct:FC = () => {
 
     useEffect(() => {
 
-        getAPIData(`${API_ENDPOINTS.SPECIFIC_PRODUCT}${id}`)
+        getData(`${API_ENDPOINTS.SPECIFIC_PRODUCT}${id}/`)
         .then((result)=>{
             console.log(result)
             setProductInfo(result.data)
@@ -43,9 +43,10 @@ const IndividualProduct:FC = () => {
 
     if(productInfo !== null){
         return (
-            <div>
-                {productInfo.name + " with description "+ productInfo.description}
-            </div>
+            <Box display="flex" flexDirection="column">
+                <Typography variant="h4" component="div">{productInfo.name}</Typography>
+                <Typography variant="body1" component="div" >{productInfo.description}</Typography>
+            </Box>
         )
     }
     else{

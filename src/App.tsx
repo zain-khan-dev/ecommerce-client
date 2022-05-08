@@ -16,20 +16,27 @@ import IndividualProduct from './pages/IndividualProduct';
 import { Box } from '@mui/system';
 import AppBar from "./components/Navbar/AppBar"
 import SellerHome from "./pages/SellerHome"
-import SellerAppBar from './components/Navbar/SellerAppBar';
+import SignupForm from "./components/SignupForm"
+import Login from "./components/Login"
+import Orders from "./pages/Orders"
+
 
 const App:React.FC = () => { 
   return (
     <Box sx={{backgroundColor:"beige", height:"100vh"}} >
       <Container maxWidth="xl" >
         <Router>
-          <SellerAppBar />
+          <AppBar />
           <Routes>
               <Route path="/home" element={<Home />} />
               <Route path="/allproducts" element={<AllProducts />} />
               <Route path="/categories" element={<Categories />} />
+              <Route path="/register" element={<SignupForm />} />
+              <Route path="/login" element={<Login />} />
               <Route path="/individual/:id" element={<IndividualProduct />} />
-              <Route path="/seller" element={<SellerHome />} />
+              <Route path="/orders" element={<Orders />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="register" element={<SignupForm />} />
             </Routes>
           </Router>
       </Container>
