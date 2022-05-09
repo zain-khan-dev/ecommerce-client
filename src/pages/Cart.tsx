@@ -20,10 +20,13 @@ const Cart = () => {
         getAuthData("cart/")
         .then((result)=> {
             console.log(result.data)
-            const data = result.data.map((arr:any)=>{
-                return arr.product_id
-            })
-            setCartItems(data)
+            setCartItems(result.data.map((items:any)=>{
+                console.log("items = ")
+                console.log(items)
+                const {name, description} = items["product_id"]
+                return {name, description, quantity:items["quantity"]}
+
+            }))
         })
         .catch((error)=> {
             console.log(error)

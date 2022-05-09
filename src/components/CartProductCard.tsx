@@ -18,6 +18,7 @@ const CartProductCard:FC<Prop> = ({cartItem}) => {
         <Grid item sx={{border:"1px solid black", p:2}}>
             <Typography variant="h6">{cartItem.name}</Typography>
             <Typography variant="body1">{cartItem.description}</Typography>
+            <Typography variant="body1">{cartItem.quantity}</Typography>
         </Grid>
     )
 }

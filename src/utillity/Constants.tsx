@@ -14,7 +14,7 @@ interface Category {
 export const API_ENDPOINTS:ENDPOINTS_SCHEMA = {
     ALL_PRODUCTS: "http://localhost:8000/ecommerce/product/",
     SPECIFIC_PRODUCT: "http://localhost:8000/ecommerce/product/",
-    ALL_ORDERS: "http://localhost:8000/ecommerce/orders/"
+    ALL_ORDERS: "http://localhost:8000/ecommerce/order/"
 }
 
 export const BASE_URL:string = "http://localhost:8000/ecommerce/"
@@ -41,5 +41,6 @@ export interface Product {
 
 export interface CartItem {
     name:string,
-    description:string
+    description:string,
+    quantity:number
 }

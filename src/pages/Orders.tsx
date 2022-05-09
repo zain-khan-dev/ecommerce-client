@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react"
-import { getData } from "../utillity/utils"
+import { getAuthData } from "../utillity/utils"
 import { API_ENDPOINTS } from "../utillity/Constants"
 
 
@@ -23,7 +23,7 @@ const Orders = () => {
     useEffect(()=> {
 
 
-        getData(API_ENDPOINTS.ALL_ORDERS + "1/")
+        getAuthData(API_ENDPOINTS.ALL_ORDERS)
         .then((result)=>{console.log(result);setOrders(result.data)})
         .catch((e)=>console.log(e))
 

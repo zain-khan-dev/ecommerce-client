@@ -39,7 +39,13 @@ const ProductCard:FC<Prop> = ({product}) => {
 
 
     const addToCartHandler = (e:React.MouseEvent<HTMLButtonElement, MouseEvent> , product:number) => {
-        postAuthData("addToCart/", {"product_id":product})
+        // postAuthData("addToCart/", {"product_id":product})
+
+        const formData = new FormData()
+        formData.append("product_id", product + "")
+        formData.append("quantity", quantity + "")
+
+        postAuthData("addToCart/", formData)
         .then((result)=>{
             console.log(result)
             console.log("Added to cart succesfully")
