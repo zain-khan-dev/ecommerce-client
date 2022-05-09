@@ -29,7 +29,8 @@ const ProductCard:FC<Prop> = ({product}) => {
         const formData = new FormData()
         formData.append("status", "PE")
         formData.append("product_id", product.id+"")
-
+        formData.append("quantity", quantity + "")
+        formData.append("bought_at", product.price+"")
 
         placeOrder("order/", formData)
 
@@ -58,6 +59,7 @@ const ProductCard:FC<Prop> = ({product}) => {
                 </Link>
                 <div>{product.description}</div>
             </Box>
+            <Box sx={{textAlign:"center"}}><Typography variant="body1">RS. {product.price} * {quantity} = {product.price * quantity}</Typography></Box>
             <Box display="flex" sx={{p:2, textAlign:"center", justifyContent:"center"}}>
                 <Button variant="outlined" sx={{width:"5px", height:"30px"}} onClick={()=>setQuantity(quantity-1)}>
                     -

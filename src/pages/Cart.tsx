@@ -33,7 +33,7 @@ const Cart = () => {
     }, [])
 
     return (
-        <Grid container justifyContent={"space-evenly"}>
+        <Grid container justifyContent={"space-evenly"} sx={{mt:2}}>
             {cartItems.map((cartItem)=><CartProductCard cartItem={cartItem} />)}
         </Grid>
     )

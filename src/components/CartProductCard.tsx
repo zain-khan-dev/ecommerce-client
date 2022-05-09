@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material"
 import Grid from "@mui/material/Grid"
 import {FC, useEffect} from "react"
 import {CartItem} from "../utillity/Constants"
@@ -14,9 +15,9 @@ const CartProductCard:FC<Prop> = ({cartItem}) => {
     }, [])
  
     return (
-        <Grid item>
-            <div>Title is {cartItem.name}</div>
-            <div> description is {cartItem.description}</div>
+        <Grid item sx={{border:"1px solid black", p:2}}>
+            <Typography variant="h6">{cartItem.name}</Typography>
+            <Typography variant="body1">{cartItem.description}</Typography>
         </Grid>
     )
 }

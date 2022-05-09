@@ -34,6 +34,7 @@ export interface Product {
     description:string,
     seller:number,
     stars:number,
+    price:number,
     orders:any[]
 }
 
