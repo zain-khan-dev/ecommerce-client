@@ -1,9 +1,7 @@
 import {FC, useEffect, useState} from "react"
 import {getData} from "../utillity/utils"
-import { Box } from "@mui/material"
 import { API_ENDPOINTS } from "../utillity/Constants"
 import { useParams } from "react-router-dom"
-import { Typography } from "@mui/material"
 
 
 
@@ -43,10 +41,10 @@ const IndividualProduct:FC = () => {
 
     if(productInfo !== null){
         return (
-            <Box display="flex" flexDirection="column">
-                <Typography variant="h4" component="div">{productInfo.name}</Typography>
-                <Typography variant="body1" component="div" >{productInfo.description}</Typography>
-            </Box>
+            <div >
+                <span >{productInfo.name}</span>
+                <span >{productInfo.description}</span>
+            </div>
         )
     }
     else{

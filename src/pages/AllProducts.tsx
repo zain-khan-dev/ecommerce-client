@@ -1,6 +1,5 @@
 import {FC, useEffect, useState} from "react"
 import {getData} from "../utillity/utils"
-import { Box } from "@mui/material"
 import { API_ENDPOINTS } from "../utillity/Constants"
 
 import ProductCard from "../components/ProductCard"
@@ -11,8 +10,6 @@ const AllProducts:FC = () => {
 
 
     const [products, setProducts] = useState<Product[]>([])
-
-
 
 
     useEffect(() => {
@@ -32,11 +29,11 @@ const AllProducts:FC = () => {
 
 
     return(
-        <Box sx={{mt:4}}>
-            <Grid container justifyContent="space-evenly">
+        <div >
+            <div >
                 {products.map((product)=><ProductCard product={product} />)}
-            </Grid>
-        </Box>
+            </div>
+        </div>
     )
 }
 

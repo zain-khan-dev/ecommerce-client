@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom"
-import { Button, Typography } from "@mui/material"
-import { Box } from "@mui/material"
 import { FC } from "react"
 import {Product} from "../utillity/Constants"
 import {useState} from 'react'
@@ -12,8 +10,6 @@ import {postAuthData} from "../utillity/utils"
 interface Prop {
     product:Product
 }
-
-
 
 
 const ProductCard:FC<Prop> = ({product}) => {
@@ -59,26 +55,26 @@ const ProductCard:FC<Prop> = ({product}) => {
 
     return (
         <Grid item xs={12} sm={6} md={4} lg={2} sx={{ p:2,borderRadius:"10px", backgroundColor:"white"}}>
-            <Box  height={{xs:"100px", md:"200px" }}  sx={{textAlign:"center" }}>
+            <div  >
                 <Link to={`/individual/${product.id}`}>
                     <div>{product.name}</div>
                 </Link>
                 <div>{product.description}</div>
-            </Box>
-            <Box sx={{textAlign:"center"}}><Typography variant="body1">RS. {product.price} * {quantity} = {product.price * quantity}</Typography></Box>
-            <Box display="flex" sx={{p:2, textAlign:"center", justifyContent:"center"}}>
-                <Button variant="outlined" sx={{width:"5px", height:"30px"}} onClick={()=>setQuantity(quantity-1)}>
+            </div>
+            <div><span>RS. {product.price} * {quantity} = {product.price * quantity}</span></div>
+            <div>
+                <button  onClick={()=>setQuantity(quantity-1)}>
                     -
-                </Button>
-                <Box sx={{px:2}}><Typography variant="h6">{quantity}</Typography></Box>
-                <Button variant="outlined" sx={{width:"5px", height:"30px"}} onClick={()=>setQuantity(quantity+1)}>
+                </button>
+                <div ><span >{quantity}</span></div>
+                <button  onClick={()=>setQuantity(quantity+1)}>
                     +
-                </Button>
-            </Box>
-            <Box display="flex" flexDirection={{ md:"row"}} justifyContent="center">
-                <Button variant="contained"   sx={{width:"70px", height:"40px", fontSize:"10px"}}  onClick={(e) => addToCartHandler(e, product.id)}>Add to Cart</Button>
-                <Button variant="contained" sx={{width:"60px", height:"40px",ml:4}} color="secondary" onClick={(e) => placeOrderHandler(e, product)}>Buy </Button>
-            </Box>
+                </button>
+            </div>
+            <div >
+                <button  onClick={(e) => addToCartHandler(e, product.id)}>Add to Cart</button>
+                <button onClick={(e) => placeOrderHandler(e, product)}>Buy </button>
+            </div>
         </Grid>
     )
 }

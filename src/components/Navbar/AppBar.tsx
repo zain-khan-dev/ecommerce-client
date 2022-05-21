@@ -1,55 +1,45 @@
-import { Box } from "@mui/material"
 import { Link } from "react-router-dom"
-import { Typography } from "@mui/material"
-import { Button } from "@mui/material"
+
 import {useState} from "react"
-import FormDialog from "../Dialog"
 
 
 const AppBar = () => {
 
     const [open, setOpen] = useState<boolean>(false)
 
-    
-    const handleDialogAction = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        e.preventDefault()
-        setOpen(!open)
-    }
-
     return (
-        <Box sx={{mx:"auto", mt:1}} width={{ md:"50%"}}     display="flex" justifyContent="space-between">
+        <div >
             <Link to="/home" style={{textDecoration:"none"}}>
-                <Box component="span"  sx={{lineHeight:1}} >
-                    <Typography variant="h6">Home</Typography>
-                </Box>
+                <div  >
+                    <span >Home</span>
+                </div>
             </Link>
             <Link to="/allproducts" style={{textDecoration:"none"}}>
-                <Box component="span" sx={{lineHeight:1}} >
-                <Typography variant="h6">Individual Product</Typography>
-                </Box>
+                <div  >
+                <span>Individual Product</span>
+                </div>
             </Link>
             <Link to="/categories" style={{textDecoration:"none"}}>
-                <Box component="span"  sx={{lineHeight:1}} >
-                <Typography variant="h6">Categories</Typography>
-                </Box></Link>
+                <div >
+                <span >Categories</span>
+                </div></Link>
             <Link to="/allproducts" style={{textDecoration:"none"}}>
-                <Box component="span" sx={{lineHeight:1}} >
-                <Typography variant="h6">All Product</Typography>
-                </Box>
+                <div  >
+                <span >All Product</span>
+                </div>
             </Link>
             <Link to="/orders" style={{textDecoration:"none"}}>
-                <Box component="span" sx={{lineHeight:1}} >
-                <Typography variant="h6">My Orders</Typography>
-                </Box>
+                <div  >
+                <span>My Orders</span>
+                </div>
             </Link>
             <Link to="cart">
-                <Box component="span" sx={{lineHeight:1}} >
-                    <Typography variant="h6">Cart</Typography>
-                </Box>
+                <div  >
+                    <span >Cart</span>
+                </div>
             </Link>
-            <Button variant="contained" onClick={handleDialogAction}> Signup</Button>
-            <FormDialog open={open} setOpen={setOpen} />
-        </Box>
+            {/* <button  onClick={handleDialogAction}> Signup</button> */}
+        </div>
     )
 }
 
