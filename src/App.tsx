@@ -10,34 +10,32 @@ import {
 import AllProducts from './pages/AllProducts';
 import Categories from './pages/Categories';
 import IndividualProduct from './pages/IndividualProduct';
-import AppBar from "./components/Navbar/AppBar"
 import SignupForm from "./components/SignupForm"
 import Login from "./components/Login"
 import Orders from "./pages/Orders"
 import Cart from "./pages/Cart"
+import Navbar from './components/Navbar';
 
 
 
 const App:React.FC = () => { 
   return (
-    <div  >
-      <div >
-        <Router>
-          <AppBar />
-          <Routes>
-              <Route path="/home" element={<Home />} />
-              <Route path="/allproducts" element={<AllProducts />} />
-              <Route path="/categories" element={<Categories />} />
-              <Route path="/register" element={<SignupForm />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/individual/:id" element={<IndividualProduct />} />
-              <Route path="/orders" element={<Orders />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="register" element={<SignupForm />} />
-              <Route path="/cart" element={<Cart />} />
-            </Routes>
-          </Router>
-      </div>
+    <div className="mx-auto md:w-3/4 bg-blue-200">
+      <Router>
+        <Navbar />
+        <Routes>
+            <Route path="/home" element={<Home />} />
+            <Route path="/allproducts" element={<AllProducts />} />
+            <Route path="/categories" element={<Categories />} />
+            <Route path="/register" element={<SignupForm />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/individual/:id" element={<IndividualProduct />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="register" element={<SignupForm />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+        </Router>
     </div>
   );
 }
