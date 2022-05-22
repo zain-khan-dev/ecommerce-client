@@ -23,6 +23,7 @@ const App:React.FC = () => {
     <div className="mx-auto md:w-3/4 bg-blue-200">
       <Router>
         <Navbar />
+        <div className="border-2 border-yellow-600 mt-2 mb-2" />
         <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/allproducts" element={<AllProducts />} />
