@@ -1,8 +1,16 @@
 import { Formik, Form, Field } from "formik"
+import { useDispatch } from "react-redux"
+import { setLogged } from "../reducer/LoginSlice"
 import { BASE_URL } from "../utillity/Constants"
 import { postData } from "../utillity/utils"
 
+
+
+
 const LoginForm = () => {
+
+    const dispatch = useDispatch()
+
     return(
         <div className="md:w-2/5 mx-auto mt-4 p-4"  >
             <Formik
@@ -15,6 +23,7 @@ const LoginForm = () => {
                     .then((result)=>{
                         localStorage.setItem("access_token",result.data["access"])
                         localStorage.setItem("refresh_token", result.data["refresh"])  
+                        dispatch(setLogged(true))
                     })
                     .catch((e)=>{
                         console.log(e)
