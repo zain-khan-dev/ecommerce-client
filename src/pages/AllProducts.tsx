@@ -3,13 +3,13 @@ import {getData} from "../utillity/utils"
 import { API_ENDPOINTS } from "../utillity/Constants"
 
 import ProductCard from "../components/ProductCard"
-import { Product } from "../utillity/Constants"
+import { ProductSchema } from "../utillity/Constants"
 import Grid from "@mui/material/Grid"
 
 const AllProducts:FC = () => {
 
 
-    const [products, setProducts] = useState<Product[]>([])
+    const [products, setProducts] = useState<ProductSchema[]>([])
 
 
     useEffect(() => {
@@ -29,10 +29,10 @@ const AllProducts:FC = () => {
 
 
     return(
-        <div >
-            <div >
-                {products.map((product)=><ProductCard product={product} />)}
-            </div>
+        <div className="grid md:grid-cols-4 grid-cols-1 text-center md:max-w-5xl mx-auto">
+            {products.map((product)=>(
+                <ProductCard product={product} />
+            ))}
         </div>
     )
 }

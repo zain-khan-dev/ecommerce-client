@@ -31,7 +31,7 @@ const LoginForm = () => {
                     .catch((e)=>{
                         console.log(e)
                     })
-                    console.log(values)
+                    console.log(values) 
                 }}
             >
                 <Form className="rounded-xl bg-white flex flex-col items-center ">

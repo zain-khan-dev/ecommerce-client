@@ -28,14 +28,13 @@ export interface Order {
     product_id:number
 }
 
-export interface Product {
+export interface ProductSchema {
     id:number,
     name:string,
     description:string,
     seller:number,
     stars:number,
-    price:number,
-    orders:any[]
+    price:number
 }
 
 
