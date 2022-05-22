@@ -1,65 +1,78 @@
-// Render Prop
-import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { postData } from '../utillity/utils';
-
-const Basic = () => (
-  <div>
-    <h1>Any place in your app!</h1>
-    <Formik
-      initialValues={{ email: '', password: '', address:'',name:'',phone_number:'' }}
-      validate={values => {
-        const errors:any = {};
-        if (!values.email) {
-          errors.email = 'Required';
-        } else if (
-          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-        ) {
-          errors.email = 'Invalid email address';
-        }
-        return errors;
-      }}
-      onSubmit={(values, { setSubmitting }) => {
-
-        console.log(values.email)
-        const data = {user:{username:values.email, password:values.password},name:values.name, address:values.address, phone_number:values.phone_number}
-
-        postData("http://localhost:8000/ecommerce/customer/", data)
-        .then((result)=>console.log(result))
-        .catch((e)=>console.log(e))
+import { Formik, Form, Field } from "formik"
+import { useDispatch } from "react-redux"
+import { setLogged } from "../reducer/LoginSlice"
+import { BASE_URL } from "../utillity/Constants"
+import { postData } from "../utillity/utils"
 
 
-        // setTimeout(() => {
-        //   alert(JSON.stringify(values, null, 2));
-        //   setSubmitting(false);
-        // }, 400);
-      }}
-    >
-      {({ isSubmitting }) => (
-        <Form>
-            <Field type="email" name="email" placeholder="Enter Email" /><br />
-            <ErrorMessage name="email" component="div" />
-            <Field type="text" name="name" placeholder="Enter Name" /><br />
-            <ErrorMessage name="name" component="div" />
-            <Field type="password" name="password" placeholder="Enter Password" /><br />
-            <ErrorMessage name="password" component="div" />
-            <Field type="text" name="address" placeholder="Enter Address" /><br />
-            <ErrorMessage name="address" component="div" />
-            <Field type="text" name="phone_number" placeholder="Enter Phone Number" /><br />
-            <ErrorMessage name="phone_number" component="div" />
-            <button type="submit" disabled={isSubmitting}>
-                Submit
-            </button>
-        </Form>
-      )}
-    </Formik>
-  </div>
-);
-
-export default Basic;
 
 
-// user = models.OneToOneField(User, on_delete=models.CASCADE, default=None, related_name='users')
-// name = models.CharField(max_length=200, null=True)
-// address = models.CharField(max_length=2000)
-// phone_number = models.CharField(max_length=20)
+const LoginForm = () => {
+
+    const dispatch = useDispatch()
+
+    return(
+        <div className="md:w-1/3 mx-auto mt-4 p-4"  >
+            <Formik
+                initialValues={{
+                    "username":'',
+                    "password":'',
+                    "phone_number":"",
+                    "address":""
+                }}
+                onSubmit={(values)=>{
+                    postData(`http://localhost:8000/api/token/`, values)
+                    .then((result)=>{
+                        localStorage.setItem("access_token",result.data["access"])
+                        localStorage.setItem("refresh_token", result.data["refresh"])  
+                        dispatch(setLogged(true))
+                    })
+                    .catch((e)=>{
+                        console.log(e)
+                    })
+                    console.log(values)
+                }}
+            >
+                <Form className="rounded-xl bg-white  flex flex-col items-center ">
+                <h1 className="my-2 text-4xl p-2 divide-x">Register</h1>
+                <div className="border-2 border-yellow-700 w-full" />
+                    <label htmlFor="email" className="font-xl font-bold mt-4">Email</label>
+                    <Field
+                        className="shadow-xl rounded-xl px-3 py-2 my-4 w-3/4"
+                        id="username"
+                        name="username"
+                        type="email" 
+                        placeholder="Enter Email Address"
+                        />
+                    <label htmlFor="password" className="font-xl font-bold mt-2">Password</label>
+                    <Field
+                        className="shadow-xl rounded-xl px-3 py-2 my-4 w-3/4" 
+                        id="password"
+                        name="password"
+                        type="password" 
+                        placeholder="Enter password"
+                        />
+                    <label htmlFor="phone_number" className="font-xl font-bold mt-2">Phone Number</label>
+                    <Field
+                        className="shadow-xl rounded-xl px-3 py-2 my-4 w-3/4" 
+                        id="phone_number"
+                        name="phone_number"
+                        type="phone_number" 
+                        placeholder="Enter Phone Number"
+                        />
+                    <label htmlFor="Address" className="font-xl font-bold mt-2">Enter Address</label>
+                    <Field
+                        as="textarea"
+                        className="shadow-xl rounded-xl px-3 py-2 my-4 w-3/4" 
+                        id="address"
+                        name="address"
+                        type="address" 
+                        placeholder="Enter Address to deliver your products"
+                        />
+                    <button className="mt-5 mb-4 rounded-xl px-4 py-2 shadow-xl bg-blue-700  text-white text-xl" type="submit">Login</button>
+                </Form>
+            </Formik>
+        </div>
+    )
+}
+export default LoginForm
