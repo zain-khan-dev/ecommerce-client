@@ -44,6 +44,15 @@ export interface CartItem {
     quantity:number
 }
 
+export interface OrderSchema {
+    product_id:ProductSchema,
+    bought_at:number,
+    quantity:number,
+    order_ts:string,
+    status:string
+}
+
+
 export const MIN_ORDER = 1
 
 export const MAX_ORDER = 20

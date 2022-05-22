@@ -1,27 +1,16 @@
 import {useEffect, useState} from "react"
 import { getAuthData } from "../utillity/utils"
 import { API_ENDPOINTS } from "../utillity/Constants"
-
-
-interface Order {
-    id:string,
-    order_ts:string,
-    customer_id:string,
-    status:string,
-    product_id:string,
-    quantity:number,
-    bought_at:number
-}
-
+import OrderCard from "../components/OrderCard"
+import {OrderSchema} from "../utillity/Constants"
 
 const Orders = () => {
 
 
-    const [orders, setOrders] = useState<Order[]>([])
+    const [orders, setOrders] = useState<OrderSchema[]>([])
 
 
     useEffect(()=> {
-
 
         getAuthData(API_ENDPOINTS.ALL_ORDERS)
         .then((result)=>{console.log(result);setOrders(result.data)})
@@ -30,16 +19,11 @@ const Orders = () => {
         
     }, [])
 
+    console.log(orders)
+
     return (
-        <div>
-            {orders.map((order=>
-            <div>
-                <div>Product id is {order.product_id}</div>
-                <div>Product was placed at {order.order_ts}</div> 
-                <div>The status is {order.status}</div>
-                <div>Bought at {order.bought_at}</div>
-                <div>Quantity bought {order.quantity}</div>
-            </div>
+        <div className="grid grid-cols-1 text-center p-4">
+            {orders.map((order=> <OrderCard order={order} />
             ))}
         </div>
     )
