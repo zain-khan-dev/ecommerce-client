@@ -1,14 +1,24 @@
 import { Formik, Form, Field } from "formik"
+import { BASE_URL } from "../utillity/Constants"
+import { postData } from "../utillity/utils"
 
 const LoginForm = () => {
     return(
         <div className="md:w-2/5 mx-auto mt-4 p-4"  >
             <Formik
                 initialValues={{
-                    "email":'',
+                    "username":'',
                     "password":''
                 }}
                 onSubmit={(values)=>{
+                    postData(`http://localhost:8000/api/token/`, values)
+                    .then((result)=>{
+                        localStorage.setItem("access_token",result.data["access"])
+                        localStorage.setItem("refresh_token", result.data["refresh"])  
+                    })
+                    .catch((e)=>{
+                        console.log(e)
+                    })
                     console.log(values)
                 }}
             >
@@ -18,8 +28,8 @@ const LoginForm = () => {
                     <label htmlFor="email" className="font-xl font-bold mt-4">Email</label>
                     <Field
                         className="shadow-xl rounded-xl px-3 py-2 my-4"
-                        id="email"
-                        name="email"
+                        id="username"
+                        name="username"
                         type="email" 
                         placeholder="Enter Email Address"
                         />
