@@ -15,6 +15,7 @@ import Orders from "./pages/Orders"
 import Cart from "./pages/Cart"
 import Navbar from './components/Navbar';
 import LoginForm from './components/LoginForm';
+import CategoryType from './pages/CategoryType';
 
 
 
@@ -26,14 +27,16 @@ const App:React.FC = () => {
         <div className="border-2 border-yellow-600 mt-2 mb-2" />
         <Routes>
             <Route path="/home" element={<Home />} />
-            <Route path="/allproducts" element={<AllProducts />} />
-            <Route path="/categories" element={<Categories />} />
+            <Route path="/products" element={<AllProducts />} />
+            <Route path="/category/:type" element={<CategoryType />} />
+            <Route path="/category" element={<Categories />} />
             <Route path="/register" element={<SignupForm />} />
             <Route path="/login" element={<LoginForm />} />
             <Route path="/individual/:id" element={<IndividualProduct />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="register" element={<SignupForm />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/products/:id" element={<IndividualProduct />} />
           </Routes>
         </Router>
     </div>

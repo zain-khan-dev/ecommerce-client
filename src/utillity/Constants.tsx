@@ -83,7 +83,8 @@ export interface OrderSchema {
 
 export interface CategorySchema {
     type:string,
-    image_url:string
+    image_url:string,
+    link:string
 }
 
 
@@ -94,32 +95,32 @@ export const MAX_ORDER = 20
 
 
 export const CATEGORIES:CategorySchema[] = [
-    { type:'Appliances', image_url:appli },
-    { type:'Apps & Games', image_url:booki },
-    { type:'Arts, Crafts, & Sewing', image_url:paper },
-    { type:'Automotive Parts & Accessories', image_url:car },
-    { type:'Baby', image_url:baby },
-    { type:'Beauty & Personal Care', image_url:perso },
-    { type:'Books', image_url:books },
-    { type:'CDs & Vinyl', image_url:cd },
-    { type:'Cell Phones & Accessories', image_url:cell },
-    { type:'Clothing, Shoes and Jewelry', image_url:fashi },
-    { type:'Collectibles & Fine Art', image_url:diamo },
-    { type:'Computers', image_url:compu },
-    { type:'Electronics', image_url:circu },
-    { type:'Garden & Outdoor', image_url:garde },
-    { type:'Grocery & Gourmet Food', image_url:groce },
-    { type:'Handmade', image_url:handc },
-    { type:'Health, Household & Baby Care', image_url:healt },
-    { type:'Home & Kitchen', image_url:house },
-    { type:'Industrial & Scientific', image_url:resea },
-    { type:'Luggage & Travel Gear', image_url:bagga },
-    { type:'Movies & TV', image_url:cinem },
-    { type:'Musical Instruments', image_url:live },
-    { type:'Office Products', image_url:offic },
-    { type:'Pet Supplies', image_url:pet },
-    { type:'Sports & Outdoors', image_url:bicyc },
-    { type:'Tools & Home Improvement', image_url:tools },
-    { type:'Toys & Games', image_url:toys },
-    { type:'Video Games', image_url:conso }
+    { type:'Appliances', image_url:appli , link:"/category/appliances"},
+    { type:'Apps & Games', image_url:booki, link:"/category/apps&games" },
+    { type:'Arts, Crafts, & Sewing', image_url:paper, link:"/category/arts&craft" },
+    { type:'Automotive Parts & Accessories', image_url:car , link:"/category/auto"},
+    { type:'Baby', image_url:baby, link:"/category/baby" },
+    { type:'Beauty & Personal Care', image_url:perso, link:"/category/beauty" },
+    { type:'Books', image_url:books , link:"/category/books"},
+    { type:'CDs & Vinyl', image_url:cd , link:"/category/cd"},
+    { type:'Cell Phones & Accessories', image_url:cell , link:"/category/phones"},
+    { type:'Clothing, Shoes and Jewelry', image_url:fashi , link:"/category/cloths"},
+    { type:'Collectibles & Fine Art', image_url:diamo , link:"/category/collectibles"},
+    { type:'Computers', image_url:compu , link:"/category/computers"},
+    { type:'Electronics', image_url:circu , link:"/category/electronics"},
+    { type:'Garden & Outdoor', image_url:garde , link:"/category/garden&outdoor"},
+    { type:'Grocery & Gourmet Food', image_url:groce , link:"/category/grocery"},
+    { type:'Handmade', image_url:handc , link:"/category/handmade"},
+    { type:'Health, Household & Baby Care', image_url:healt , link:"/category/health&care"},
+    { type:'Home & Kitchen', image_url:house , link:"/category/home&kitchen"},
+    { type:'Industrial & Scientific', image_url:resea , link:"/category/industry&scientific"},
+    { type:'Luggage & Travel Gear', image_url:bagga , link:"/category/luggage&travel"},
+    { type:'Movies & TV', image_url:cinem , link:"/category/movies&tv"},
+    { type:'Musical Instruments', image_url:live , link:"/category/instruments"},
+    { type:'Office Products', image_url:offic , link:"/category/office"},
+    { type:'Pet Supplies', image_url:pet , link:"/category/pet"},
+    { type:'Sports & Outdoors', image_url:bicyc , link:"/category/sports"},
+    { type:'Tools & Home Improvement', image_url:tools , link:"/category/tools"},
+    { type:'Toys & Games', image_url:toys , link:"/category/toys"},
+    { type:'Video Games', image_url:conso , link:"/category/games"}
 ]

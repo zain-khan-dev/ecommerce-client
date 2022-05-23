@@ -12,7 +12,7 @@ const LoginForm = () => {
     const dispatch = useDispatch()
 
     return(
-        <div className="md:w-2/3 mx-auto mt-4 p-4"  >
+        <div className="sm:2/3 md:w-1/3 mx-auto mt-4 p-4"  >
             <Formik
                 initialValues={{
                     "username":'',
