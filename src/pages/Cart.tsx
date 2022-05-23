@@ -23,7 +23,7 @@ const Cart = () => {
                 console.log("items = ")
                 console.log(items)
                 const {name, description} = items["product_id"]
-                return {name, description, quantity:items["quantity"]}
+                return {name, description, quantity:items["quantity"], price:items["price"]}
 
             }))
         })
@@ -35,7 +35,7 @@ const Cart = () => {
     }, [])
 
     return (
-        <div>
+        <div className="grid md:grid-cols-1">
             {cartItems.map((cartItem)=><CartProductCard cartItem={cartItem} />)}
         </div>
     )

@@ -1,3 +1,33 @@
+import appli from '../asset/appliances.png'
+import booki from '../asset/booking.png'
+import paper from '../asset/paper-crafts.png'
+import car from '../asset/car-repair.png'
+import baby from '../asset/baby-boy.png'
+import perso from '../asset/personal-hygiene.png'
+import books from '../asset/books.png'
+import cd from '../asset/cd-rom.png'
+import cell from '../asset/cell-phone.png'
+import fashi from '../asset/fashion.png'
+import diamo from '../asset/diamond.png'
+import compu from '../asset/computer.png'
+import circu from '../asset/circuit-board.png'
+import garde from '../asset/gardening.png'
+import groce from '../asset/grocery.png'
+import handc from '../asset/handcraft.png'
+import healt from '../asset/healthcare.png'
+import house from '../asset/house.png'
+import resea from '../asset/research.png'
+import bagga from '../asset/baggage.png'
+import cinem from '../asset/cinema.png'
+import live from '../asset/live-music.png'
+import offic from '../asset/office.png'
+import pet from '../asset/pet-food.png'
+import bicyc from '../asset/bicycle.png'
+import tools from '../asset/tools.png'
+import toys from '../asset/toys.png'
+import conso from '../asset/console.png'
+
+
 
 interface ENDPOINTS_SCHEMA {
     ALL_PRODUCTS:string,
@@ -19,9 +49,6 @@ export const API_ENDPOINTS:ENDPOINTS_SCHEMA = {
 
 export const BASE_URL:string = "http://localhost:8000/ecommerce/"
 
-export const CATEGORIES:Category[] = [{type:"Fashion", image_url:"hey"}, {type:"Sports", image_url:"nice"}]
-
-
 export interface Order {
     status:string;
     customer_id:number;
@@ -41,18 +68,58 @@ export interface ProductSchema {
 export interface CartItem {
     name:string,
     description:string,
-    quantity:number
+    quantity:number,
+    price:number
 }
 
 export interface OrderSchema {
     product_id:ProductSchema,
-    bought_at:number,
+    price:number,
     quantity:number,
     order_ts:string,
     status:string
 }
 
 
+export interface CategorySchema {
+    type:string,
+    image_url:string
+}
+
+
 export const MIN_ORDER = 1
 
 export const MAX_ORDER = 20
+
+
+
+export const CATEGORIES:CategorySchema[] = [
+    { type:'Appliances', image_url:appli },
+    { type:'Apps & Games', image_url:booki },
+    { type:'Arts, Crafts, & Sewing', image_url:paper },
+    { type:'Automotive Parts & Accessories', image_url:car },
+    { type:'Baby', image_url:baby },
+    { type:'Beauty & Personal Care', image_url:perso },
+    { type:'Books', image_url:books },
+    { type:'CDs & Vinyl', image_url:cd },
+    { type:'Cell Phones & Accessories', image_url:cell },
+    { type:'Clothing, Shoes and Jewelry', image_url:fashi },
+    { type:'Collectibles & Fine Art', image_url:diamo },
+    { type:'Computers', image_url:compu },
+    { type:'Electronics', image_url:circu },
+    { type:'Garden & Outdoor', image_url:garde },
+    { type:'Grocery & Gourmet Food', image_url:groce },
+    { type:'Handmade', image_url:handc },
+    { type:'Health, Household & Baby Care', image_url:healt },
+    { type:'Home & Kitchen', image_url:house },
+    { type:'Industrial & Scientific', image_url:resea },
+    { type:'Luggage & Travel Gear', image_url:bagga },
+    { type:'Movies & TV', image_url:cinem },
+    { type:'Musical Instruments', image_url:live },
+    { type:'Office Products', image_url:offic },
+    { type:'Pet Supplies', image_url:pet },
+    { type:'Sports & Outdoors', image_url:bicyc },
+    { type:'Tools & Home Improvement', image_url:tools },
+    { type:'Toys & Games', image_url:toys },
+    { type:'Video Games', image_url:conso }
+]

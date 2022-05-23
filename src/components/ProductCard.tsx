@@ -2,6 +2,8 @@ import {MIN_ORDER, ProductSchema, MAX_ORDER} from "../utillity/Constants"
 import {RiStarSFill} from "react-icons/ri"
 import { postAuthData } from "../utillity/utils"
 import {useState} from "react"
+import {Link} from "react-router-dom"
+
 interface Props {
     product:ProductSchema
 }
@@ -9,15 +11,26 @@ interface Props {
 const ProductCard:React.FC<Props> = ({product}) => {
     const [stock, setStock] = useState<number>(1)
 
-    const handleAddToCart = () => {
+    const handleAddToCart = (e:React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        e.preventDefault()
         console.log("Adding to cart")
+        console.log()
+        postAuthData("addToCart/ ", {product_id:product.id, quantity:stock})
+        .then((result)=>{
+            console.log(result)
+        })
+        .catch((e)=>{
+            console.log(e)
+        })
         // postAuthData("orders/", )
     }
 
-    const handleBuyProduct = () => {
+    const handleBuyProduct = (e:React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+
+        e.preventDefault()
         console.log("placing order")
         console.log(product.id)
-        postAuthData("order/", {"product_id":product.id, quantity:stock, "bought_at":product.price, status:"PE"})
+        postAuthData("order/", {"product_id":product.id, quantity:stock, "price":product.price, status:"PE"})
         .then((result)=>{
             console.log("Successfully placed order")
             console.log(result)
@@ -28,35 +41,40 @@ const ProductCard:React.FC<Props> = ({product}) => {
 
     }
 
-    const handleIncrement = () => {
+    const handleIncrement = (event:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        event.preventDefault()
         setStock(stock<MAX_ORDER?stock+1:stock)
     }
 
-    const handleDecrement = () => {
+    const handleDecrement = (event:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        event.preventDefault()
         setStock(stock>MIN_ORDER?stock-1:stock)
     }
 
 
     return(
-        <div className="bg-white p-4 m-2 rounded-xl shadow-xl w-3/4 md:w-11/12">
-            <div className="text-xl font-bold ">{product.name}</div>
-            <div className="w-full border-yellow-600 border-2 mt-4"></div> 
-            {/* <div>{product.description}</div> */}
-            <div className="flex flex-row justify-center mt-4">
-                {[...Array(product.stars)].map(()=>(<RiStarSFill style={{color:"rgb(218,165,32)", fontSize:"30px"}} />))}
+        <Link to={`/products/${product.id}`}>
+            <div className="bg-white p-4 m-2 rounded-xl shadow-xl w-3/4 md:w-11/12">
+                <img width={"150px"} height={"100px"} className="text-center mx-auto" src="https://static.remove.bg/remove-bg-web/7deb868fb894efaa6d5f6cbfd1a016f4a613fda9/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png"/>
+                <div className="text-xl font-bold ">{product.name}</div>
+                <div className="w-full border-yellow-600 border-2 mt-4"></div> 
+                {/* <div>{product.description}</div> */}
+                <div className="flex flex-row justify-center mt-4">
+                    {[...Array(product.stars)].map(()=>(<RiStarSFill style={{color:"rgb(218,165,32)", fontSize:"30px"}} />))}
+                </div>
+                <div className="text-sm">{product.stars} stars</div>
+                <div className="text-2xl mt-4">$ {product.price}</div>
+                <div className="flex flex-row p-4 justify-center" >
+                    <button onClick={handleDecrement} className="text-2xl px-4 bg-gray-300 mx-2" >-</button>
+                    <div className="text-xl mx-2"> {stock}</div>
+                    <button onClick={handleIncrement} className="text-2xl px-4 bg-gray-300 mx-2">+</button>
+                </div>
+                <div className="flex flex-row justify-between mt-4">
+                    <div onClick={handleAddToCart} className="hover:cursor-pointer mr-1 bg-yellow-500 px-3 py-2 text-sm text-black rounded-xl shadow-xl">Add to Cart</div>
+                    <div onClick={handleBuyProduct} className="hover:cursor-pointer ml-1 bg-blue-500 px-3 py-2 text-sm text-white rounded-xl shadow-xl" >Buy Now</div>
+                </div>
             </div>
-            <div className="text-sm">{product.stars} stars</div>
-            <div className="text-2xl mt-4">$ {product.price}</div>
-            <div className="flex flex-row p-4 justify-center" >
-                <button onClick={handleDecrement} className="text-2xl px-4 bg-gray-300 mx-2" >-</button>
-                <div className="text-xl mx-2"> {stock}</div>
-                <button onClick={handleIncrement} className="text-2xl px-4 bg-gray-300 mx-2">+</button>
-            </div>
-            <div className="flex flex-row justify-between mt-4">
-                <div onClick={handleAddToCart} className="hover:cursor-pointer mr-1 bg-yellow-500 px-3 py-2 text-sm text-black rounded-xl shadow-xl">Add to Cart</div>
-                <div onClick={handleBuyProduct} className="hover:cursor-pointer ml-1 bg-blue-500 px-3 py-2 text-sm text-white rounded-xl shadow-xl" >Buy Now</div>
-            </div>
-        </div>
+        </Link>
     )
 }
 

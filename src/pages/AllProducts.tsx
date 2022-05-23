@@ -29,7 +29,7 @@ const AllProducts:FC = () => {
 
 
     return(
-        <div className="grid md:grid-cols-4 grid-cols-1 text-center md:max-w-5xl mx-auto">
+        <div className="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 text-center lg:max-w-5xl mx-auto">
             {products.map((product)=>(
                 <ProductCard product={product} />
             ))}
