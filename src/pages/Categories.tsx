@@ -9,9 +9,9 @@ interface Props {
 
 const CategoryCard:React.FC<Props>  = ({category}) => {
     return (
-        <div className="flex flex-col p-4 m-4 bg-white rounded-xl shadow-xl text-center ">
-            <div>{category.type}</div>
-            <div><img src={category.image_url} /></div>
+        <div className="flex flex-col p-4 m-4 bg-white rounded-xl shadow-xl text-center hover:bg-yellow-400 hover:cursor-pointer">
+            <div><img width={"100px"} height={"100px"} className="mx-auto" src={category.image_url} /></div>
+            <div className="text-xl mt-4 ">{category.type}</div>
         </div>
     )
 }
