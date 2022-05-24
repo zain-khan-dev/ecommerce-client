@@ -69,7 +69,8 @@ export interface ProductSchema {
     seller:number,
     stars:number,
     price:number,
-    images:ProductImage[]
+    images:ProductImage[],
+    discount:number
 }
 
 

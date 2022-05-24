@@ -55,7 +55,7 @@ const ProductCard:React.FC<Props> = ({product}) => {
     return(
         <Link to={`/products/${product.id}`}>
             <div className="bg-white p-4 m-2 rounded-xl shadow-xl w-3/4 md:w-11/12">
-                <img width={"150px"} height={"100px"} className="text-center mx-auto" src={product.images.length > 0?product.images[0].image:""}/>
+                <img  className="text-center mx-auto object-cover h-[100px] w-[100px]" src={product.images.length > 0?product.images[0].image:""}/>
                 <div className="text-xl font-bold ">{product.name}</div>
                 <div className="w-full border-yellow-600 border-2 mt-4"></div> 
                 {/* <div>{product.description}</div> */}
@@ -63,7 +63,13 @@ const ProductCard:React.FC<Props> = ({product}) => {
                     {[...Array(product.stars)].map(()=>(<RiStarSFill style={{color:"rgb(218,165,32)", fontSize:"30px"}} />))}
                 </div>
                 <div className="text-sm">{product.stars} stars</div>
-                <div className="text-2xl mt-4">$ {product.price}</div>
+                {product.discount > 0?
+                <div className="flex flex-row text-center justify-center items-center mt-4">
+                    <div className="text-sm p-2 line-through ml-2">$ {product.price}</div>
+                    <div className="text-2xl text-red-500">-{product.discount}%</div>
+                    <div className="text-2xl ml-2">${(100-product.discount)*product.price/100}</div>
+                </div>:<div className="text-2xl text-center ">{product.price}</div>}
+
                 <div className="flex flex-row p-4 justify-center" >
                     <button onClick={handleDecrement} className="text-2xl px-4 bg-gray-300 mx-2" >-</button>
                     <div className="text-xl mx-2"> {stock}</div>
