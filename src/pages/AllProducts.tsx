@@ -16,7 +16,7 @@ const AllProducts:FC = () => {
 
         getData(API_ENDPOINTS.ALL_PRODUCTS)
         .then((result)=>{
-            console.log(result.data)
+            //, images:result.data.images.map((img:any)=>img.image)
             setProducts(result.data)
         })
         .catch((e)=>{

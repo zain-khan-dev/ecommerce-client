@@ -55,13 +55,21 @@ export interface Order {
     product_id:number
 }
 
+interface ProductImage {
+    id:number,
+    image:string,
+    product_id:number
+}
+
+
 export interface ProductSchema {
     id:number,
     name:string,
     description:string,
     seller:number,
     stars:number,
-    price:number
+    price:number,
+    images:ProductImage[]
 }
 
 

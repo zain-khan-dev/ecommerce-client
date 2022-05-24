@@ -55,7 +55,7 @@ const ProductCard:React.FC<Props> = ({product}) => {
     return(
         <Link to={`/products/${product.id}`}>
             <div className="bg-white p-4 m-2 rounded-xl shadow-xl w-3/4 md:w-11/12">
-                <img width={"150px"} height={"100px"} className="text-center mx-auto" src="https://static.remove.bg/remove-bg-web/7deb868fb894efaa6d5f6cbfd1a016f4a613fda9/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png"/>
+                <img width={"150px"} height={"100px"} className="text-center mx-auto" src={product.images.length > 0?product.images[0].image:""}/>
                 <div className="text-xl font-bold ">{product.name}</div>
                 <div className="w-full border-yellow-600 border-2 mt-4"></div> 
                 {/* <div>{product.description}</div> */}
