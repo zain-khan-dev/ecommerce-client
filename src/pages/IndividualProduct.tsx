@@ -41,15 +41,15 @@ const IndividualProduct:FC = () => {
 
     if(productInfo !== null){
         return (
-            <div >
-                <span >{productInfo.name}</span>
-                <span >{productInfo.description}</span>
+            <div className="flex flex-row mt-4">  
+                <div className="flex-1 bg-white mx-2 text-center">Images will go here</div>
+                <div className="flex-1 bg-white mx-2 text-center">Product Specs will go here</div>
             </div>
         )
     }
     else{
         return(
-            <div></div>
+            <div>Loading</div>
         )
     }
 }

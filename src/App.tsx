@@ -16,7 +16,7 @@ import Cart from "./pages/Cart"
 import Navbar from './components/Navbar';
 import LoginForm from './components/LoginForm';
 import CategoryType from './pages/CategoryType';
-
+import Comments from "./components/Comments"
 
 
 const App:React.FC = () => { 

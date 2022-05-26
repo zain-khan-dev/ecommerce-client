@@ -133,3 +133,8 @@ export const CATEGORIES:CategorySchema[] = [
     { type:'Toys & Games', image_url:toys , link:"/category/toys"},
     { type:'Video Games', image_url:conso , link:"/category/games"}
 ]
+
+export interface CommentSchema {
+    comment_by:string
+    text:string
+}
