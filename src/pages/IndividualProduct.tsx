@@ -2,27 +2,19 @@ import {FC, useEffect, useState} from "react"
 import {getData} from "../utillity/utils"
 import { API_ENDPOINTS } from "../utillity/Constants"
 import { useParams } from "react-router-dom"
-
-
+import ImageViewer from "../components/ImageViewer"
+import {ProductSchema} from "../utillity/Constants"
 
 
 const IndividualProduct:FC = () => {
 
 
-    interface ProductInfoSchema {
-
-        name:string,
-        description:string,
-        seller:number,
-        stars:number
-
-    }
-
     const { id } = useParams();
 
     
 
-    const [productInfo, setProductInfo] = useState<ProductInfoSchema| null>(null)
+    const [productInfo, setProductInfo] = useState<ProductSchema| null>(null)
+
 
 
     useEffect(() => {
@@ -42,7 +34,7 @@ const IndividualProduct:FC = () => {
     if(productInfo !== null){
         return (
             <div className="flex flex-row mt-4">  
-                <div className="flex-1 bg-white mx-2 text-center">Images will go here</div>
+                <ImageViewer images={productInfo.images} />
                 <div className="flex-1 bg-white mx-2 text-center">Product Specs will go here</div>
             </div>
         )

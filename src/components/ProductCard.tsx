@@ -55,7 +55,7 @@ const ProductCard:React.FC<Props> = ({product}) => {
     return(
         <Link to={`/products/${product.id}`}>
             <div className="bg-white p-4 m-2 rounded-xl shadow-xl w-3/4 md:w-11/12">
-                <img  className="text-center mx-auto object-cover h-[100px] w-[100px]" src={product.images.length > 0?product.images[0].image:""}/>
+                <img  className="text-center mx-auto object-cover h-[100px] w-[100px]" src={product.images.length > 0?product.images[0].src:""}/>
                 <div className="text-xl font-bold ">{product.name}</div>
                 <div className="w-full border-yellow-600 border-2 mt-4"></div> 
                 {/* <div>{product.description}</div> */}

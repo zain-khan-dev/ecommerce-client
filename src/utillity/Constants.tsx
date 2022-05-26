@@ -55,9 +55,9 @@ export interface Order {
     product_id:number
 }
 
-interface ProductImage {
+export interface ProductImageSchema {
     id:number,
-    image:string,
+    src:string,
     product_id:number
 }
 
@@ -69,7 +69,7 @@ export interface ProductSchema {
     seller:number,
     stars:number,
     price:number,
-    images:ProductImage[],
+    images:ProductImageSchema[],
     discount:number
 }
 
