@@ -4,6 +4,7 @@ import { API_ENDPOINTS } from "../utillity/Constants"
 import { useParams } from "react-router-dom"
 import ImageViewer from "../components/ImageViewer"
 import {ProductSchema} from "../utillity/Constants"
+import ProductSpecsPanel from "../components/ProductSpecsPanel"
 
 
 const IndividualProduct:FC = () => {
@@ -33,9 +34,9 @@ const IndividualProduct:FC = () => {
 
     if(productInfo !== null){
         return (
-            <div className="flex flex-row mt-4">  
+            <div className=" flex flex-col lg:flex-row max-w-6xl mx-auto mt-4">  
                 <ImageViewer images={productInfo.images} />
-                <div className="flex-1 bg-white mx-2 text-center">Product Specs will go here</div>
+                <ProductSpecsPanel product={productInfo} />
             </div>
         )
     }

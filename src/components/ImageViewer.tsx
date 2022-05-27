@@ -11,7 +11,7 @@ const ImageViewer:React.FC<Props> = ({images}) => {
     console.log(images)
 
     return (
-        <div className="basis-1/3 bg-white mx-2" >
+        <div className="basis-1/3 bg-white mx-2 rounded-xl p-2" >
             {images.length === 0?
                 <div>No preview available</div>:
                 <ImagePanel images={images} />
