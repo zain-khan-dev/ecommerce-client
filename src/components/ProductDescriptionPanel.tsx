@@ -8,8 +8,9 @@ interface Props {
 
 const ProductDescriptionPanel:React.FC<Props> = ({product}) => {
     return (
-        <div className="basis-2/3 rounded-xl p-2 bg-white  text-center">
+        <div className="basis-3/5 rounded-xl p-2 mx-2 bg-white  text-center">
             <div className="md:text-4xl text-xl font-bold mt-4">{product.name}</div>
+            <div className="md:text-4xl text-xl mt-4">$ {product.price}</div>
             <div className="mt-4 justify-center">{product.description}</div>
             <div className="flex flex-row justify-center mt-4">
                     {[...Array(product.stars)].map(()=>(<RiStarSFill style={{color:"rgb(218,165,32)", fontSize:"30px"}} />))}

@@ -75,7 +75,8 @@ export interface ProductSchema {
     price:number,
     images:ProductImageSchema[],
     discount:number,
-    features:FeatureSchema[]
+    features:FeatureSchema[],
+    specs:ProductSpecificationSchema
 }
 
 
@@ -142,4 +143,16 @@ export const CATEGORIES:CategorySchema[] = [
 export interface CommentSchema {
     comment_by:string
     text:string
+}
+
+export interface ProductSpecificationSchema {
+    width:number
+    height:number;
+    manufacturer_name:string;
+    measure_type:string;
+    model_no:string;
+    expiry_date:string;
+    country_of_origin:string;
+    category:string;
+    release_date: string;
 }

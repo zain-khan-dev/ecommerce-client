@@ -34,12 +34,12 @@ const IndividualProduct:FC = () => {
 
     if(productInfo !== null){
         return (
-            <div className="max-w-4xl mx-auto">
-                <div className=" flex flex-col lg:flex-row   mt-4">  
+            <div className="max-w-5xl mx-auto">
+                <div className=" flex flex-col lg:flex-row  mt-4">  
                     <ImageViewer images={productInfo.images} />
                     <ProductDescriptionPanel product={productInfo} />
                 </div>
-                <ProductSpecs />
+                <ProductSpecs specs={productInfo.specs} />
             </div>
             
         )
