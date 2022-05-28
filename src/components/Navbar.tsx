@@ -28,7 +28,6 @@ const Navbar = () => {
         return (
             <div className="flex flex-row md:text-xl justify-between md:p-2 md:max-w-5xl mx-auto ">
                <Link to="/home" ><div className="hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">Home</div></Link>
-               <Link to="/products" ><div className="hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl" >Individual Product</div></Link>
                <Link to="/category"><div className="hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">Categories</div></Link>
                <Link to="/products" ><div className="hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">All Product</div></Link>
                <Link to="/login"><div className="hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">Login</div></Link>
@@ -41,7 +40,6 @@ const Navbar = () => {
         return (
             <div className="flex flex-row md:text-xl justify-between md:p-2 md:max-w-5xl mx-auto ">
                <Link to="/home" ><div className="hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">Home</div></Link>
-               <Link to="/products" ><div className="hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl" >Individual Product</div></Link>
                <Link to="/category"><div className="hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">Categories</div></Link>
                <Link to="/products" ><div className="hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">All Product</div></Link>
                <Link to="/orders" ><div className="hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">My Orders</div></Link>

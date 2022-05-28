@@ -1,5 +1,5 @@
 import {CommentSchema} from "../utillity/Constants"
-
+import SingleCommentPanel from "./SingleCommentPanel"
 
 interface Props {
     comments: CommentSchema[]
@@ -7,13 +7,14 @@ interface Props {
 
 const Comments:React.FC<Props> = ({comments}) => {
     return (
-        <div className="flex flex-col">
+        <div className="mt-2 bg-white flex flex-col items-center rounded-xl">
+            <h1 className="mt-2 text-2xl font-bold">Comments & Reviews</h1>
             {comments.map((comment)=>(
-                <div className="mt-4 p-2">
-                    <div className="text-blue-400 bg-yellow-600">by {comment.comment_by}</div>
-                    <div className="text-center">{comment.text}</div>
-                </div>
+                <SingleCommentPanel comment={comment} />
             ))}
+                <SingleCommentPanel comment={comments[0]} />
+                <SingleCommentPanel comment={comments[0]} />
+                <SingleCommentPanel comment={comments[0]} />
         </div>
     )    
 }

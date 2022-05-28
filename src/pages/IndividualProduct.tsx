@@ -6,6 +6,7 @@ import ImageViewer from "../components/ImageViewer"
 import {ProductSchema} from "../utillity/Constants"
 import ProductDescriptionPanel from "../components/ProductDescriptionPanel"
 import ProductSpecs from "../components/ProductSpecs"
+import Comments from "../components/Comments"
 
 const IndividualProduct:FC = () => {
 
@@ -40,6 +41,7 @@ const IndividualProduct:FC = () => {
                     <ProductDescriptionPanel product={productInfo} />
                 </div>
                 <ProductSpecs category={productInfo.category} specs={productInfo.specs} />
+                <Comments comments={productInfo.comments} />
             </div>
             
         )

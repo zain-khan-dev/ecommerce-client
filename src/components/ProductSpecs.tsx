@@ -7,7 +7,7 @@ interface Props {
 
 const ProductSpecs:React.FC<Props> = ({specs, category}) => {
     return (
-        <div className="bg-white text-center flex flex-col items-center rounded-xl my-4">
+        <div className="bg-white text-center flex flex-col items-center rounded-xl my-4 p-4">
             <div className="text-2xl font-bold my-2">Specifications</div>
             <table className="table-fixed w-9/12 mx-4 mt-4 border-1 border-black">
                 <thead>
