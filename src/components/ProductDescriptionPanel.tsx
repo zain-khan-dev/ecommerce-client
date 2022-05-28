@@ -10,7 +10,13 @@ const ProductDescriptionPanel:React.FC<Props> = ({product}) => {
     return (
         <div className="basis-3/5 rounded-xl p-2 mx-2 bg-white  text-center">
             <div className="md:text-4xl text-xl font-bold mt-4">{product.name}</div>
-            <div className="md:text-4xl text-xl mt-4">$ {product.price}</div>
+            {product.discount > 0?<div className="flex flex-row text-center justify-center items-center mt-4">
+                    <div className="text-md p-2 line-through ml-2 mt-2">$ {product.price}</div>
+                    <div className="text-2xl text-red-500">-{product.discount}%</div>
+                </div>:<div></div>}
+            <div>
+                <div className="text-3xl ml-2 font-bold">${Math.round((100-product.discount)*product.price/100)}</div>
+            </div>
             <div className="mt-4 justify-center">{product.description}</div>
             <div className="flex flex-row justify-center mt-4">
                     {[...Array(product.stars)].map(()=>(<RiStarSFill style={{color:"rgb(218,165,32)", fontSize:"30px"}} />))}

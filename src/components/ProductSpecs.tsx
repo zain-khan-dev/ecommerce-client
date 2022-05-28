@@ -1,10 +1,11 @@
 import {ProductSpecificationSchema} from "../utillity/Constants"
 
 interface Props {
-    specs: ProductSpecificationSchema
+    specs: ProductSpecificationSchema,
+    category:string
 }
 
-const ProductSpecs:React.FC<Props> = ({specs}) => {
+const ProductSpecs:React.FC<Props> = ({specs, category}) => {
     return (
         <div className="bg-white text-center flex flex-col items-center rounded-xl my-4">
             <div className="text-2xl font-bold my-2">Specifications</div>
@@ -39,7 +40,7 @@ const ProductSpecs:React.FC<Props> = ({specs}) => {
                 </tr>
                 <tr>
                     <td className="bg-gray-300 p-2 text-lg">Category Name</td>
-                    <td className="bg-gray-300 p-2 tex-lg">{specs.category}</td>
+                    <td className="bg-gray-300 p-2 tex-lg">{category}</td>
                 </tr>
                 <tr>
                     <td className="bg-gray-300 p-2 text-lg">Release Date</td>

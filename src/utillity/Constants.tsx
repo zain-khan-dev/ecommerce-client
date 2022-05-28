@@ -72,6 +72,7 @@ export interface ProductSchema {
     description:string,
     seller:number,
     stars:number,
+    category:string,
     price:number,
     images:ProductImageSchema[],
     discount:number,
@@ -153,6 +154,5 @@ export interface ProductSpecificationSchema {
     model_no:string;
     expiry_date:string;
     country_of_origin:string;
-    category:string;
     release_date: string;
 }

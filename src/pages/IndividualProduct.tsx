@@ -39,7 +39,7 @@ const IndividualProduct:FC = () => {
                     <ImageViewer images={productInfo.images} />
                     <ProductDescriptionPanel product={productInfo} />
                 </div>
-                <ProductSpecs specs={productInfo.specs} />
+                <ProductSpecs category={productInfo.category} specs={productInfo.specs} />
             </div>
             
         )
