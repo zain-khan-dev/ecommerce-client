@@ -35,11 +35,12 @@ const ImageBar:React.FC<ImageBarProps> = ({images, selectedImage, setSelectedIma
         setSelectedImage(idx)
     }
 
+    console.log(selectedImage)
     return (
         <div className="flex flex-row bg-gray-200  ">
-            {images.map((image, idx)=>{return (
+            {images.map((image, idx:number)=>{return (
             <div className="flex flex-col" onClick={()=>changePosterImage(idx)}>
-                <img className="w-[65px] h-[75px] mx-2 shadow-xl p-2 bg-white rounded-xl mt-4 mb-2 hover:cursor-pointer" src={image.src} />
+                <img className={"w-[65px] h-[75px] mx-2 shadow-xl p-2  bg-white rounded-xl mt-4 mb-2 hover:cursor-pointer " + ((idx===selectedImage)?"border-4 border-yellow-600":"")} src={image.src} />
             </div>)})}
         </div>
     )

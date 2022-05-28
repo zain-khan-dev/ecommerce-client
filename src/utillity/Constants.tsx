@@ -61,6 +61,10 @@ export interface ProductImageSchema {
     product_id:number
 }
 
+export interface FeatureSchema {
+    product_id:number,
+    description:string
+}
 
 export interface ProductSchema {
     id:number,
@@ -70,7 +74,8 @@ export interface ProductSchema {
     stars:number,
     price:number,
     images:ProductImageSchema[],
-    discount:number
+    discount:number,
+    features:FeatureSchema[]
 }
 
 
