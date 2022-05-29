@@ -1,6 +1,7 @@
 import axios, { AxiosResponse, AxiosInstance } from "axios"
 import {BASE_URL} from "./Constants"
 import { Order } from "./Constants"
+import { CATEGORY_MAPPING } from "./Constants"
 
 export const getAxiosInstance = ():AxiosInstance    => {
 
@@ -82,4 +83,8 @@ export const postAuthData = async (url:string, data:any) => {
 
 export const placeOrder = async (url:string, order:any) => {
     return await postAuthData(url, order)
+}
+
+export const getCategoryType = (category:string):string => {
+    return CATEGORY_MAPPING[category]
 }

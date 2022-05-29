@@ -15,8 +15,7 @@ import Orders from "./pages/Orders"
 import Cart from "./pages/Cart"
 import Navbar from './components/Navbar';
 import LoginForm from './components/LoginForm';
-import CategoryType from './pages/CategoryType';
-import Comments from "./components/Comments"
+import CategoryProduct from './pages/CategoryProduct';
 
 
 const App:React.FC = () => { 
@@ -28,7 +27,7 @@ const App:React.FC = () => {
         <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/products" element={<AllProducts />} />
-            <Route path="/category/:type" element={<CategoryType />} />
+            <Route path="/category/:type" element={<CategoryProduct />} />
             <Route path="/category" element={<Categories />} />
             <Route path="/register" element={<SignupForm />} />
             <Route path="/login" element={<LoginForm />} />
