@@ -23,7 +23,7 @@ const DropDown = () => {
                     <Menu.Item >
                     {({ active }) => (
                         <Link
-                        className={active?"block p-2 bg-blue-400":"p-2 block"}
+                        className={active?"block p-2 bg-blue-600 text-white" :"p-2 block"}
                         to="/login">
                             Login
                         </Link>
@@ -32,7 +32,7 @@ const DropDown = () => {
                     <Menu.Item >
                     {({ active }) => (
                         <Link
-                        className={active?"block bg-blue-400 p-2":"block p-2"}
+                        className={active?"block bg-blue-600 text-white p-2":"block p-2"}
                         to="/signup">
                             Signup
                         </Link>
