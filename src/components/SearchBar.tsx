@@ -14,22 +14,30 @@ const SearchBar = () => {
 
     const [searchValue, setSearchValue] = useState<string>("")
     
-
+    const [fetched, setFetched] = useState<boolean>(false)
 
     const fetchItems = (value:string) => {
         if(value.trim() === ""){
             return
         }
+        console.log("here")
         getData(`http://localhost:8000/ecommerce/search/${value}`)
-
+        .then((result)=>{
+            setSearchItems(result.data.map((item:any)=>item.name))
+        })
+        .catch((e)=>{
+            console.log(e)
+        })
+        setFetched(true)
     }
 
     const handleInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
         setSearchValue(e.target.value)
+        setFetched(false)
         if(timeout!=null){
             clearTimeout(timeout)
         }
-        timeout = setTimeout(()=>fetchItems(e.target.value), 5000)
+        timeout = setTimeout(()=>fetchItems(e.target.value), 1500)
     }
 
     return (
@@ -51,13 +59,13 @@ const SearchBar = () => {
                                 afterLeave={() => setSearchValue('')}
                     >
                         <Combobox.Options className="absolute overflow-auto w-full pr-2">
-                            {searchedItems.map((search)=><Combobox.Option value={"helloworld"}>
+                            {searchedItems.length === 0 && searchValue!="" && fetched
+                            ?<div className="relative cursor-default select-none py-2 px-4 text-gray-700 bg-white">Nothing found.</div>
+                            :searchedItems.map((search)=><Combobox.Option value={search}>
                                 {({selected, active})=>(
                                     <div className={"p-1 " + (active?"bg-blue-600 text-white ":"bg-gray-100") }>{search}</div>
                                 )}
                             </Combobox.Option>)}
-                            <Combobox.Option value={"helloworld"} />
-                            <Combobox.Option value={"helloworld"} />
                         </Combobox.Options>
                     </Transition>
                 </div>
