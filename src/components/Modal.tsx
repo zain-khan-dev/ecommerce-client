@@ -1,13 +1,15 @@
 import {Dialog, Transition} from "@headlessui/react"
 import {useState, Fragment} from "react"
+import { postAuthData } from "../utillity/utils";
 
 interface Props {
     isOpen:boolean;
-    setIsOpen:React.Dispatch<React.SetStateAction<boolean>>
+    setIsOpen:React.Dispatch<React.SetStateAction<boolean>>,
+    product_id:number
 }
 
 
-const Modal:React.FC<Props> = ({isOpen, setIsOpen}) => {
+const Modal:React.FC<Props> = ({isOpen, setIsOpen, product_id}) => {
 
 
 
@@ -18,7 +20,14 @@ const Modal:React.FC<Props> = ({isOpen, setIsOpen}) => {
 
     const submitReview = () => {
 
-        console.log(title, description, rating)
+        console.log(title, description, rating, product_id)
+        postAuthData("comments/", {comment_title:title, comment_text:description, rating:rating, comment_to:product_id})
+        .then((result)=>{
+            console.log(result)
+        })
+        .catch((e)=>{
+            console.log(e)
+        })
 
     }
 

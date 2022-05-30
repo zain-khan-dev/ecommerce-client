@@ -41,7 +41,7 @@ const IndividualProduct:FC = () => {
                     <ProductDescriptionPanel product={productInfo} />
                 </div>
                 <ProductSpecs category={productInfo.category} specs={productInfo.specs} />
-                <Comments comments={productInfo.comments} />
+                <Comments product_id={productInfo.id} comments={productInfo.comments} />
             </div>
             
         )

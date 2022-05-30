@@ -4,12 +4,22 @@ interface Props {
     comment:CommentSchema
 }
 
+
+function capitalize(name:string) {
+    return  name.replace(name.charAt(0), name.charAt(0).toUpperCase())
+}
+
 const SingleCommentPanel:React.FC<Props> = ({comment}) => {
+
+
+    console.log(comment.rating)
+
     return (
         <div className="flex flex-col border-2 p-2 rounded-xl border-blue-600 w-3/4 mt-4 mb-2">
             <div className="bg-blue-600 p-2 rounded-xl text-white flex flex-col text-xl">
                 <div className=" flex flex-row ">
-                    <div className="text-lg">{comment.comment_by.replace(comment.comment_by.charAt(0), comment.comment_by.charAt(0).toUpperCase())} rated </div> 
+                    <div className="text-lg">
+                        {comment.comment_by!=null?(capitalize(comment.comment_by)):"Anonymous"} rated </div> 
                     {[...Array(comment.rating)].map((_)=><span className="mt-1 ml-2"><RiStarSFill className="text-yellow-400" /></span>)}
                     {[...Array(5 - comment.rating)].map((_)=><span className="mt-1 ml-2"><RiStarSLine /></span>)}
                 </div>
