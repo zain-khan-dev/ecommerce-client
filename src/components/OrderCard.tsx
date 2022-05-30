@@ -7,6 +7,9 @@ interface Props {
 
 
 const OrderCard:React.FC<Props> = ({order}) => {
+
+    console.log(order.product_id.images[0])
+
     return(
         <div className=" flex flex-col bg-white mt-4 rounded-xl shadow-xl p-4 md:w-1/2 mx-auto">
             <div className="flex flex-row text-sm mb-4 bg-gray-200 p-2 rounded-xl">
@@ -14,9 +17,10 @@ const OrderCard:React.FC<Props> = ({order}) => {
                 <div className="mx-4">Total <span className="font-bold">{order.price * order.quantity}</span></div>
             </div>
             <div className="flex lg:flex-row flex-col justify-between items-center">
-                    <Link to={`/product/`}>
+                    <Link to={`/product/${order.product_id.id}`}>
                         <div className="flex lg:flex-row flex-col">
-                        <img width={"150px"} height={"100px"} src="https://static.remove.bg/remove-bg-web/7deb868fb894efaa6d5f6cbfd1a016f4a613fda9/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png"/>
+                        {order.product_id.images?
+                        <img width={"150px"} height={"100px"} src={`http://www.localhost:8000${order.product_id.images[0].src}/`}/>:<div>No preview found</div>}
                         <div className="mx-4 mt-10 font-bold">{order.product_id.name}</div>
                         </div>
                     </Link>

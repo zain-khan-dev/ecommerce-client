@@ -5,8 +5,6 @@ import { getAuthData, useAuthenticationStatus } from "../utillity/utils"
 
 
 const Cart = () => {
-
-
     
     const status = useAuthenticationStatus("/cart")
 
@@ -17,16 +15,18 @@ const Cart = () => {
 
     const [cartItems, setCartItems] = useState<CartItem[]>([])
 
+
+    console.log(cartItems)
+
     useEffect(() => {
 
         getAuthData("cart/")
         .then((result)=> {
-            console.log(result.data)
+            // console.log(result.data)
             setCartItems(result.data.map((items:any)=>{
-                console.log("items = ")
-                console.log(items)
-                const {name, description} = items["product_id"]
-                return {name, description, quantity:items["quantity"], price:items["price"]}
+                const {name, description,images} = items["product_id"]
+                console.log(images)
+                return {name, description, quantity:items["quantity"], price:items["price"],images:images}
 
             }))
         })
