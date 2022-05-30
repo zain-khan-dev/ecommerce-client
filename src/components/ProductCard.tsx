@@ -15,7 +15,7 @@ const ProductCard:React.FC<Props> = ({product}) => {
         e.preventDefault()
         console.log("Adding to cart")
         console.log()
-        postAuthData("addToCart/ ", {product_id:product.id, quantity:stock})
+        postAuthData("addToCart/ ", {product_id:product.id, quantity:stock, price:product.price})
         .then((result)=>{
             console.log(result)
         })

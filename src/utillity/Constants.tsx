@@ -83,11 +83,9 @@ export interface ProductSchema {
 
 
 export interface CartItem {
-    name:string,
-    description:string,
+    product_id:ProductSchema,
     quantity:number,
-    price:number,
-    image:string
+    price:number
 }
 
 export interface OrderSchema {

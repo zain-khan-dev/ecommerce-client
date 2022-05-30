@@ -22,13 +22,13 @@ const Cart = () => {
 
         getAuthData("cart/")
         .then((result)=> {
-            // console.log(result.data)
-            setCartItems(result.data.map((items:any)=>{
-                const {name, description,images} = items["product_id"]
-                console.log(images)
-                return {name, description, quantity:items["quantity"], price:items["price"],images:images}
+            console.log(result.data)
+            setCartItems(result.data)
+            // setCartItems(result.data.map((items:any)=>{
+            //     const {name, description,images} = items["product_id"]
+            //     return {name, description, quantity:items["quantity"], price:items["price"],images:images}
 
-            }))
+            // }))
         })
         .catch((error)=> {
             console.log(error)
