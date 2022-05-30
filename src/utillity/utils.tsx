@@ -1,7 +1,11 @@
 import axios, { AxiosResponse, AxiosInstance } from "axios"
-import {BASE_URL} from "./Constants"
+import {AUTHENTICATED_URLS, BASE_URL, NON_AUTHENTICATED_URLS} from "./Constants"
 import { Order } from "./Constants"
 import { CATEGORY_MAPPING } from "./Constants"
+import { useNavigate } from "react-router-dom"
+import { useEffect } from "react"
+import { useSelector } from "react-redux"
+import { RootState } from "../reducer/store"
 
 export const getAxiosInstance = ():AxiosInstance    => {
 
@@ -87,4 +91,28 @@ export const placeOrder = async (url:string, order:any) => {
 
 export const getCategoryType = (category:string):string => {
     return CATEGORY_MAPPING[category]
+}
+
+
+
+
+export const useAuthenticationStatus = (path:string) => {
+    const navigate = useNavigate()
+
+    const isLogged = useSelector((state:RootState)=>state.login.isLogged)
+
+
+    useEffect(()=>{
+        if(!isLogged){
+            if(AUTHENTICATED_URLS.indexOf(path) != -1)
+                navigate("/home")
+        }
+        else{
+            if(NON_AUTHENTICATED_URLS.indexOf(path) != -1)
+                navigate("/home")
+        }
+    }, [])
+
+    return isLogged
+
 }

@@ -191,3 +191,9 @@ export const CATEGORY_MAPPING:any = {
     'toys':'Toys',
     'games':'Video',
 }
+
+
+export const AUTHENTICATED_URLS = ["/cart", "/orders"] // non logged in users wont see these
+
+export const NON_AUTHENTICATED_URLS = ["/login", "/signup"] // logged in users wont see these
+

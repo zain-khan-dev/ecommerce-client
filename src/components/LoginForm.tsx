@@ -1,15 +1,24 @@
 import { Formik, Form, Field } from "formik"
 import { useDispatch } from "react-redux"
+import {  useNavigate} from "react-router-dom"
 import { setLogged } from "../reducer/LoginSlice"
+import { RootState } from "../reducer/store"
 import { BASE_URL } from "../utillity/Constants"
 import { postData } from "../utillity/utils"
-
-
-
+import {useSelector} from "react-redux"
+import { useEffect } from "react"
+import { useAuthenticationStatus } from "../utillity/utils"
 
 const LoginForm = () => {
 
     const dispatch = useDispatch()
+    
+
+    const status = useAuthenticationStatus("/login")
+
+
+    const navigate = useNavigate()
+
 
     return(
         <div className="sm:2/3 md:w-1/3 mx-auto mt-4 p-4"  >
@@ -24,6 +33,7 @@ const LoginForm = () => {
                         localStorage.setItem("access_token",result.data["access"])
                         localStorage.setItem("refresh_token", result.data["refresh"])  
                         dispatch(setLogged(true))
+                        navigate("/home")
                     })
                     .catch((e)=>{
                         console.log(e)

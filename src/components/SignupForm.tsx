@@ -4,13 +4,15 @@ import { setLogged } from "../reducer/LoginSlice"
 import { BASE_URL } from "../utillity/Constants"
 import { postData } from "../utillity/utils"
 import { useNavigate } from "react-router-dom"
-
+import { useAuthenticationStatus } from "../utillity/utils"
 
 
 const LoginForm = () => {
 
 
   const navigate = useNavigate()
+
+  const status = useAuthenticationStatus("/signup")
 
 
     return(

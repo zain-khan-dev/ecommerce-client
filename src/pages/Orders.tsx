@@ -1,11 +1,14 @@
 import {useEffect, useState} from "react"
-import { getAuthData } from "../utillity/utils"
+import { getAuthData,useAuthenticationStatus } from "../utillity/utils"
 import { API_ENDPOINTS } from "../utillity/Constants"
 import OrderCard from "../components/OrderCard"
 import {OrderSchema} from "../utillity/Constants"
 
+
 const Orders = () => {
 
+
+    const status = useAuthenticationStatus("/orders")
 
     const [orders, setOrders] = useState<OrderSchema[]>([])
 

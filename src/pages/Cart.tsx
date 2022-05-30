@@ -1,11 +1,14 @@
 import { useEffect,useState } from "react"
 import CartProductCard from "../components/CartProductCard"
 import {CartItem} from "../utillity/Constants"
-import { getAuthData } from "../utillity/utils"
+import { getAuthData, useAuthenticationStatus } from "../utillity/utils"
 
 
 const Cart = () => {
 
+
+    
+    const status = useAuthenticationStatus("/cart")
 
     interface CartAPI {
         product_id:string

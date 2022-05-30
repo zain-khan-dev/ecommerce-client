@@ -3,12 +3,15 @@ import React, {useState, Fragment} from "react"
 import {Combobox, Transition} from "@headlessui/react"
 import {HiSelector} from "react-icons/hi"
 import { getData } from "../utillity/utils"
+import {ProductSchema} from "../utillity/Constants"
+import {Link} from "react-router-dom"
 
 
 let timeout:NodeJS.Timeout|null = null
+
 const SearchBar = () => {
 
-    const [searchedItems, setSearchItems] = useState<string[]>([])
+    const [searchedItems, setSearchItems] = useState<ProductSchema[]>([])
 
     const [selected, setSelected] = useState<string>("")
 
@@ -23,7 +26,7 @@ const SearchBar = () => {
         console.log("here")
         getData(`http://localhost:8000/ecommerce/search/${value}`)
         .then((result)=>{
-            setSearchItems(result.data.map((item:any)=>item.name))
+            setSearchItems(result.data.map((item:any)=>item))
         })
         .catch((e)=>{
             console.log(e)
@@ -59,11 +62,11 @@ const SearchBar = () => {
                                 afterLeave={() => setSearchValue('')}
                     >
                         <Combobox.Options className="absolute overflow-auto w-full pr-2">
-                            {searchedItems.length === 0 && searchValue!="" && fetched
+                            {searchedItems.length === 0 && searchValue!="" && fetched   
                             ?<div className="relative cursor-default select-none py-2 px-4 text-gray-700 bg-white">Nothing found.</div>
                             :searchedItems.map((search)=><Combobox.Option value={search}>
                                 {({selected, active})=>(
-                                    <div className={"p-1 " + (active?"bg-blue-600 text-white ":"bg-gray-100") }>{search}</div>
+                                    <Link to={`/products/${search.id}`}><div className={"p-1 " + (active?"bg-blue-600 text-white ":"bg-gray-100") }>{search.name}</div></Link>
                                 )}
                             </Combobox.Option>)}
                         </Combobox.Options>
