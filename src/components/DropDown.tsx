@@ -7,8 +7,7 @@ const DropDown = () => {
     return (
         <Menu as="div" className="relative inline-block text-left mt-2" >
             <div>
-                <Menu.Button>Login/Signup <BsChevronDown className="inline-block ml-0.5" /></Menu.Button>
-
+                <Menu.Button>Login <BsChevronDown className="inline-block ml-0.5" /></Menu.Button>
             </div>
             <Transition
                 as={Fragment}

@@ -8,6 +8,9 @@ import {BsSearch} from "react-icons/bs"
 import {useNavigate} from "react-router-dom"
 import SearchBar from "./SearchBar"
 import DropDown from "./DropDown"
+import {BsFillCartPlusFill} from "react-icons/bs"
+
+
 const Navbar = () => {
 
     const dispatch = useDispatch()
@@ -30,29 +33,24 @@ const Navbar = () => {
             <div className="flex flex-row md:text-xl justify-between md:p-2 md:max-w-5xl mx-auto ">
                <Link to="/home" ><div className="hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">Home</div></Link>
                <Link to="/category"><div className="hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">Categories</div></Link>
-               <Link to="/products" ><div className="hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">All Product</div></Link>
                <SearchBar />
                <DropDown />
-               {/* <select className="bg-blue-200 focus:outline-none hover:cursor-pointer">
-                   <option hidden selected>Login/Signup</option>
-                   <option onClick={()=> navigate('/login')} className=" bg-white text-xl">Login</option>
-                   <option onClick={()=> navigate('/register')} className="bg-white text-xl ">Signup</option>
-               </select> */}
-               {/* <Link to="/login"><div className="hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">Login</div></Link>
-               <Link to="/register"><div className="hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">Register</div></Link> */}
-                {/* <button  onClick={handleDialogAction}> Signup</button> */}
             </div>
         )
     }
     else{
         return (
             <div className="flex flex-row md:text-xl justify-between md:p-2 md:max-w-5xl mx-auto ">
-               <Link to="/home" ><div className="hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">Home</div></Link>
-               <Link to="/category"><div className="hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">Categories</div></Link>
-               <Link to="/products" ><div className="hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">All Product</div></Link>
-               <Link to="/orders" ><div className="hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">My Orders</div></Link>
-               <Link to="cart"><div className="hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">Cart</div></Link>
-               <div onClick={handleLogout} className="hover:cursor-pointer hover:bg-red-600 hover:text-white p-2 hover:rounded-xl">Logout</div>
+               <Link to="/home" ><div className="mt-1 hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">Home</div></Link>
+               <Link to="/category"><div className="mt-1 hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">Categories</div></Link>
+               <SearchBar />
+               <Link to="/orders" ><div className="mt-1 hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">Orders</div></Link>
+               <Link to="cart">
+                   <div className="mt-2 hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">
+                        <BsFillCartPlusFill />
+                   </div>
+                </Link>
+               <button onClick={handleLogout} className="mt-1 hover:cursor-pointer ml-2 text-white bg-red-500 rounded-xl hover:scale-110 p-2 hover:rounded-xl">Logout</button>
                 {/* <button  onClick={handleDialogAction}> Signup</button> */}
             </div>
         )
