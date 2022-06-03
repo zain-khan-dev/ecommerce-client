@@ -67,7 +67,7 @@ const ProductCard:React.FC<Props> = ({product}) => {
                 <div className="flex flex-row text-center justify-center items-center mt-4">
                     <div className="text-sm p-2 line-through ml-2">$ {product.price}</div>
                     <div className="text-2xl text-red-500">-{product.discount}%</div>
-                    <div className="text-2xl ml-2">${(100-product.discount)*product.price/100}</div>
+                    <div className="text-2xl ml-2">${parseInt((1 - product.discount/100)*product.price + "")}</div>
                 </div>:<div className="text-2xl text-center ">{product.price}</div>}
 
                 <div className="flex flex-row p-4 justify-center" >
