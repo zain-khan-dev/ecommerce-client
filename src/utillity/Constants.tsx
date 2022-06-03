@@ -85,7 +85,8 @@ export interface ProductSchema {
 export interface CartItem {
     product_id:ProductSchema,
     quantity:number,
-    price:number
+    price:number,
+    id:number,
 }
 
 export interface OrderSchema {

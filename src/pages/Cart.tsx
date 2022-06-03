@@ -38,7 +38,7 @@ const Cart = () => {
     }, [])
 
     return (
-        <div className="grid md:grid-cols-1">
+        <div className="grid grid-cols-2">
             {cartItems.map((cartItem)=><CartProductCard cartItem={cartItem} />)}
         </div>
     )

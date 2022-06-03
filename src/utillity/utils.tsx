@@ -70,6 +70,11 @@ export const postData = async (url:string, data:any) => {
 }
 
 
+export const deleteAuthData = async (url:string) => {
+    return await getAxiosInstance().delete(url)
+}
+
+
 
 export const postAuthData = async (url:string, data:any) => {
     

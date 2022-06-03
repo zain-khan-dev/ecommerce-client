@@ -41,16 +41,16 @@ const Navbar = () => {
     else{
         return (
             <div className="flex flex-row md:text-xl justify-between md:p-2 md:max-w-5xl mx-auto ">
-               <Link to="/home" ><div className="mt-1 hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">Home</div></Link>
-               <Link to="/category"><div className="mt-1 hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">Categories</div></Link>
+               <Link to="/home" ><div className="mt-1 mx-2 hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">Home</div></Link>
+               <Link to="/category"><div className="mt-1 mx-2 hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">Categories</div></Link>
                <SearchBar />
-               <Link to="/orders" ><div className="mt-1 hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">Orders</div></Link>
+               <Link to="/orders" ><div className="mt-1 mx-2 hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">Orders</div></Link>
                <Link to="cart">
-                   <div className="mt-2 hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">
+                   <div className="mt-2 mx-2 hover:bg-blue-600 hover:text-white p-2 hover:rounded-xl">
                         <BsFillCartPlusFill />
                    </div>
                 </Link>
-               <button onClick={handleLogout} className="mt-1 hover:cursor-pointer ml-2 text-white bg-red-500 rounded-xl hover:scale-110 p-2 hover:rounded-xl">Logout</button>
+               <button onClick={handleLogout} className="mt-1 mx-2 hover:cursor-pointer ml-2 text-white bg-red-500 rounded-xl hover:scale-110 p-2 hover:rounded-xl">Logout</button>
                 {/* <button  onClick={handleDialogAction}> Signup</button> */}
             </div>
         )

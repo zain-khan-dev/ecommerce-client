@@ -15,8 +15,6 @@ const ImageViewer:React.FC<Props> = ({images}) => {
             {images.length === 0?
                 <div>No preview available</div>:
                 <ImagePanel images={images} />
-                // <div>{images.map((image, idx)=>{return (idx!=0?<div>{image.src}</div>:<div></div>)})}
-                // </div>
             }
         </div>
     )
