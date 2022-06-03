@@ -1,4 +1,4 @@
-import {OrderSchema} from "../utillity/Constants"
+import {OrderSchema, ORDER_STATUS} from "../utillity/Constants"
 import {Link} from "react-router-dom"
 
 interface Props {
@@ -8,30 +8,31 @@ interface Props {
 
 interface RoundedProps {
     status:string,
-    isComplete:boolean
+    isComplete:number
 }
 
 const Rounded:React.FC<RoundedProps> = ({status, isComplete}) => {
     return (
             <div className="flex flex-col text-center items-center mx-4">
-                <div className={"rounded-full w-6 h-6 p-4 " + (isComplete?"bg-green-600":"bg-gray-600")}></div>
+                <div className={"rounded-full w-6 h-6 p-4 " + (isComplete==1?"bg-green-600":(isComplete==-1?"bg-gray-600":"bg-yellow-600"))}></div>
                 <div className="inline-block">{status}</div>
             </div>
         
     )
 }
+interface TrackPackageProps {
+    statusDesc:string
+}
+
+const TrackPacakge:React.FC<TrackPackageProps> = ({statusDesc}) => {
+
+    const statusIdx = ORDER_STATUS.findIndex((order)=>order.key == statusDesc)
 
 
-const TrackPacakge = () => {
     return (
         <div>
             <div className="flex lg:flex-row flex-col text-center items-center justify-center  mx-auto mt-4">
-                <Rounded status="Order Pending" isComplete={true}/>
-                <Rounded status="Order Processing" isComplete={true} />
-                <Rounded status="Order Shipped" isComplete={false} />
-                <Rounded status="Out for Delivery" isComplete={false} />
-                <Rounded status="Order Complete" isComplete={false} />
-                
+                {ORDER_STATUS.map((order, idx)=><Rounded status={order.incomplete} isComplete={idx < statusIdx?1:(idx == statusIdx?0:-1)}/>)}
             </div>
         </div>
     )
@@ -72,7 +73,7 @@ const OrderCard:React.FC<Props> = ({order}) => {
             <div className="mt-4">
                 <div className="text-xl font-bold">Track Package</div>
                 <hr className="border-2 my-4"/>
-                <TrackPacakge />
+                <TrackPacakge statusDesc={order.status} />
             </div>
         </div>
     )

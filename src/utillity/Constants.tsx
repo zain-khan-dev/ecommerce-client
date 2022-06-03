@@ -197,3 +197,10 @@ export const AUTHENTICATED_URLS = ["/cart", "/orders"] // non logged in users wo
 
 export const NON_AUTHENTICATED_URLS = ["/login", "/signup"] // logged in users wont see these
 
+export const ORDER_STATUS = [
+    {key:"PL", incomplete:"Order Pending",complete:"Order Confirmed"},
+    {key:"PKD", incomplete:"Order Processing",complete:"Order Processed"},
+    {key:"SHP", incomplete:"Order Shipping",complete:"Order Shipped"},
+    {key:"OFD", incomplete:"Out for Delivery",complete:"Order Delivered"},
+    {key:"CMP", incomplete:"Order Complete",complete:"Order Complete"},
+]
